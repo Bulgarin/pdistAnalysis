@@ -4,11 +4,11 @@
 
 function [pdistAnalysisCell] = pdistAverage(nameVector)
 	
-	pdistAnalysisCell = {}
-	pdistAnalysisCell{1,1} = 'subject'
-	pdistAnalysisCell{2,1} = 'visits2'
-	pdistAnalysisCell{3,1} = 'visits3'
-	pdistAnalysisCell{4,1} = 'combined'
+	pdistAnalysisCell1 = {}
+	pdistAnalysisCell1{1,1} = 'subject'
+	pdistAnalysisCell1{2,1} = 'visits2'
+	pdistAnalysisCell1{3,1} = 'visits3'
+	pdistAnalysisCell1{4,1} = 'combined'
 
 	for s = 1:length(nameVector)
 
@@ -16,3 +16,4 @@ function [pdistAnalysisCell] = pdistAverage(nameVector)
 		eval(evalString)
 
 		pdistAnalysisCell{1, x+1} = nameVector(x)
+		pdistAnalysisCell{2, x+1} = mean(pdist(mCoordsfind(visits2 >= 3)'))/mean(pdist(mCoords))
