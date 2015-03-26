@@ -1,19 +1,13 @@
 %This is a function to calculate mean(pdist(coords w/ >=3 visits))/mean(all possible coords)
-%It takes a vector of subject names as input and outputs results in the same order
+%It takes a cell array of subject names and the corresponding class of object to be analyzed as input
+%The output is a cell array of matrices organized by subject
 
 
-function [pdistAnalysisCell] = pdistAverage(nameVector)
+function [pdistAnalysisCell] = pdistAverage(nameVector, classVector)
 	
-	pdistAnalysisCell1 = {}
-	pdistAnalysisCell1{1,1} = 'subject'
-	pdistAnalysisCell1{2,1} = 'visits2'
-	pdistAnalysisCell1{3,1} = 'visits3'
-	pdistAnalysisCell1{4,1} = 'combined'
 
 	for s = 1:length(nameVector)
 
-		evalString = strcat('/home/cnslab/realtime/summaryData/siftScatterData', nameVector(s))
-		eval(evalString)
-
-		pdistAnalysisCell{1, x+1} = nameVector(x)
-		pdistAnalysisCell{2, x+1} = mean(pdist(mCoordsfind(visits2 >= 3)'))/mean(pdist(mCoords))
+		pdistAnalysisCell{s} = singleCellAverage(nameVector{s}, classVector{s})
+	end
+end
