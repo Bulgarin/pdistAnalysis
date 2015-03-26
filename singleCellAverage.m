@@ -14,10 +14,10 @@ function [pdistSingleCell] = singleCellAverage(nameVector, classNum)
 
 	for s = 1:length(nameVector)
 
-		evalString = strcat('/home/cnslab/realtime/summaryData/siftScatterData', nameVector(s))
+		evalString = strcat('/home/cnslab/realtime/summaryData/siftScatterData', nameVector{s})
 		eval(evalString)
 
-		pdistSingleCell{1, 2} = nameVector(s)
+		pdistSingleCell{1, 2} = nameVector{s}
 		pdistSingleCell{3, 2} = mean(pdist(mCoords{classNum}find(visits2{classNum} >= 3)')) ...
 		/mean(pdist(mCoords{classNum}))
 
