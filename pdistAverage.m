@@ -5,9 +5,10 @@
 
 function [pdistAnalysisCell] = pdistAverage(nameVector, classVector)
 	
+	pdistAnalysisCell = []
 
 	for s = 1:length(nameVector)
 
-		pdistAnalysisCell{s} = singleCellAverage(nameVector{s}, classVector{s})
+		pdistAnalysisCell = cat(3, pdistAnalysisCell, singleCellAverage(nameVector{s}, classVector{s}))
 	end
 end
